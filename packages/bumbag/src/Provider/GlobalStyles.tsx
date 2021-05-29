@@ -11,6 +11,11 @@ export function GlobalStyles() {
   return (
     <Global
       styles={css`
+        ${font('importUrls')(styleProps) &&
+        font('importUrls')(styleProps)
+          .map((url: string) => `@import url('${url}');`)
+          .join('')};
+
         ${colorModesCSSVariables}
 
         html,
@@ -37,11 +42,6 @@ export function GlobalStyles() {
         *::after {
           box-sizing: inherit;
         }
-
-        ${font('importUrls')(styleProps) &&
-        font('importUrls')(styleProps)
-          .map((url: string) => `@import url('${url}');`)
-          .join('')};
 
         ${theme('global.styles.base')(styleProps)};
       `}
